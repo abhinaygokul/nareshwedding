@@ -25,6 +25,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -33,6 +34,7 @@ body {
     line-height: 1.6;
     background-color: var(--bg-white);
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 a {
@@ -1045,6 +1047,17 @@ h1, h2, h3 {
 }
 
 @media (max-width: 768px) {
+    /* Mobile Smooth Scroll & Anti-Jitter Optimization */
+    .hero {
+        background-attachment: scroll !important; /* Critical: fixed background causes heavy repaint jitter on mobile */
+    }
+    .reveal, .reveal-left, .reveal-right, .reveal-zoom {
+        filter: none !important; /* Removing blur filter completely cures mobile GPU scroll stutter */
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
     /* Hero & Typography */
     .hero-title { font-size: 3rem; }
     .countdown-container { flex-wrap: wrap; justify-content: center; gap: 15px; }

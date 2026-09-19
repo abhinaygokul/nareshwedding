@@ -2,15 +2,46 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Navbar Scroll Effect ---
+    // --- High Performance Smooth Scroll Handler (rAF + passive) ---
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    const timeline = document.querySelector('.timeline');
+    let isScrollTicking = false;
+
+    const onScroll = () => {
+        const scrollY = window.scrollY;
+
+        // Navbar scrolled state
+        if (navbar) {
+            if (scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
-    });
+
+        // Timeline animated progress line
+        if (timeline) {
+            const rect = timeline.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const startDraw = windowHeight * 0.75;
+            let progress = 0;
+            if (rect.top < startDraw) {
+                const scrolledIntoTimeline = startDraw - rect.top;
+                const totalScrollable = rect.height;
+                progress = Math.min(100, Math.max(0, (scrolledIntoTimeline / totalScrollable) * 100));
+            }
+            timeline.style.setProperty('--scroll-progress', `${progress}%`);
+        }
+
+        isScrollTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!isScrollTicking) {
+            window.requestAnimationFrame(onScroll);
+            isScrollTicking = true;
+        }
+    }, { passive: true });
 
     // --- Mobile Menu Toggle ---
     const hamburger = document.querySelector('.hamburger');
@@ -91,16 +122,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // --- Floating Hearts Animation ---
+    // --- Floating Hearts Animation (Performance Throttled) ---
     const createHeart = () => {
+        if (document.hidden) return;
         const hero = document.querySelector('.hero');
         if (!hero) return;
+        
+        // Keep DOM lightweight on mobile devices
+        const maxHearts = window.innerWidth < 768 ? 5 : 12;
+        if (document.querySelectorAll('.floating-heart').length >= maxHearts) return;
+
         const heart = document.createElement('div');
         heart.classList.add('floating-heart');
         heart.innerHTML = '<i class="fas fa-heart"></i>';
         
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 3 + 5 + 's'; // 5-8 seconds
+        heart.style.animationDuration = Math.random() * 3 + 5 + 's';
         heart.style.opacity = Math.random() * 0.4 + 0.1;
         
         hero.appendChild(heart);
@@ -109,7 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
             heart.remove();
         }, 8000);
     };
-    setInterval(createHeart, 600); // create a heart every 600ms
+    const heartFrequency = window.innerWidth < 768 ? 1200 : 700;
+    setInterval(createHeart, heartFrequency);
 
     // --- Music Toggle ---
     const musicControl = document.getElementById('musicControl');
@@ -160,27 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Interactive Scroll Path (Timeline) ---
-    const timeline = document.querySelector('.timeline');
-    if (timeline) {
-        window.addEventListener('scroll', () => {
-            const rect = timeline.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            
-            // Starts drawing when timeline top reaches 70% of viewport
-            const startDraw = windowHeight * 0.7;
-            let progress = 0;
-            
-            if (rect.top < startDraw) {
-                const scrolledIntoTimeline = startDraw - rect.top;
-                // Add some padding to total height so it reaches 100% easily
-                const totalScrollable = rect.height; 
-                progress = Math.min(100, Math.max(0, (scrolledIntoTimeline / totalScrollable) * 100));
-            }
-            
-            timeline.style.setProperty('--scroll-progress', `${progress}%`);
-        });
-    }
+
 
     // --- Cinematic 3D Mouse-Tracking (Holographic Effect) ---
     const cards3D = document.querySelectorAll('.event-card, .gallery-item');
