@@ -1159,8 +1159,8 @@ h1, h2, h3 {
         margin: 0 auto; 
     }
     
-    /* Footer Formatting */
-    .footer-title .mobile-amp {
+    /* Title Formatting */
+    .mobile-amp {
         display: block;
         margin: 5px 0;
     }
