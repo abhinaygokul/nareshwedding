@@ -26,7 +26,8 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
     -webkit-overflow-scrolling: touch;
-    overflow-x: hidden;
+    overflow-x: clip;
+    overflow-y: auto;
     max-width: 100%;
     width: 100%;
 }
@@ -36,7 +37,8 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     background-color: var(--bg-white);
-    overflow-x: hidden;
+    overflow-x: clip;
+    overflow-y: auto;
     max-width: 100%;
     width: 100%;
     position: relative;
@@ -1056,7 +1058,7 @@ h1, h2, h3 {
 @media (max-width: 768px) {
     /* Strict Mobile Viewport Containment */
     html, body {
-        overflow-x: hidden !important;
+        overflow-x: clip !important;
         max-width: 100% !important;
         width: 100% !important;
         position: relative;
