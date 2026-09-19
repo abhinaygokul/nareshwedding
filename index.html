@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naresh & Radhika Lakshmi - Wedding Invitation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Envelope Overlay -->
+    <div id="envelope-overlay" class="envelope-overlay">
+        <div class="envelope-container" id="openEnvelopeBtn">
+            <div class="envelope">
+                <div class="envelope-back"></div>
+                <div class="envelope-liner-back"></div>
+                <div class="envelope-paper">
+                    <div class="envelope-text">N & R</div>
+                    <div class="envelope-date">11.10.2026</div>
+                </div>
+                <div class="envelope-left"></div>
+                <div class="envelope-right"></div>
+                <div class="envelope-bottom"></div>
+                <div class="envelope-flap">
+                    <div class="wax-seal">N&R</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Music Button -->
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="echoes_of_lumen-love-acoustic-romantic-hindi-guitar-589284.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">N & R</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#couple">Couple</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay" style="z-index: 1;"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-up delay-1">Naresh & Radhika Lakshmi</h1>
+            <p class="hero-date animate-up delay-2">October 11, 2026 &bull; Vijayawada</p>
+            <div class="countdown-container animate-up delay-3">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <p>Days</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <p>Hours</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <p>Mins</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <p>Secs</p>
+                </div>
+            </div>
+            <a href="#events" class="btn-primary animate-up delay-4">View Events</a>
+        </div>
+    </section>
+
+    <!-- Couple Section -->
+    <section id="couple" class="section-padding couple-section">
+        <div class="container">
+            <div class="section-title text-center reveal">
+                <h2>The Happy Couple</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="couple-grid">
+                <div class="couple-card reveal">
+                    <div class="couple-img">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Groom">
+                    </div>
+                    <div class="couple-info">
+                        <h3>Chi. Naresh</h3>
+                        <p style="font-style: italic; color: var(--primary-color);">S/o. Adusumalli Venkateswara Rao & Smt. Narayanamma</p>
+                        <p class="couple-desc">A fun-loving soul who loves exploring the world. He found his perfect match and best friend in Radhika, and cannot wait to begin this beautiful journey of a lifetime together.</p>
+                    </div>
+                </div>
+                <div class="heart-divider reveal">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="couple-card reveal-right">
+                    <div class="couple-img">
+                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=600&q=80" alt="Bride">
+                    </div>
+                    <div class="couple-info">
+                        <h3>Chi.La.Sou. Radhika Lakshmi</h3>
+                        <p style="font-style: italic; color: var(--primary-color);">D/o. Sri Anumukonda Giri Nagendra Rao & Smt. Maheswari Nagarani</p>
+                        <p class="couple-desc">A creative spirit with a heart of gold. She lights up every room she walks into and is incredibly excited to build a beautiful, love-filled future with Naresh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="section-padding story-section">
+        <div class="container">
+            <div class="section-title text-center reveal">
+                <h2>Our Story</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="story-content reveal text-center" style="max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.1rem; color: var(--text-light); line-height: 1.8;">
+                    Our journey began in 2021 when a mutual friend introduced us. What started as a simple conversation over coffee quickly blossomed into a deep connection. Over the next few years, we shared countless adventures, supported each other through life's ups and downs, and realized we couldn't imagine our lives apart. In December 2025, Naresh popped the question under a starry sky, and Radhika said "Yes!". We are thrilled to celebrate our love and the beginning of our new chapter with all of our favorite people.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section-padding bg-light events-section">
+        <div class="container">
+            <div class="section-title text-center reveal">
+                <h2>When & Where</h2>
+                <div class="divider"></div>
+                <p>Join us in celebrating our special days.</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card reveal-left">
+                    <div class="event-icon"><i class="fas fa-om"></i></div>
+                    <h3>Sumuhurtham</h3>
+                    <div class="event-details">
+                        <p><i class="far fa-calendar-alt"></i> Sunday, Oct 11, 2026</p>
+                        <p><i class="far fa-clock"></i> 11:36 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Sri Siri Convention, Inner Ring Road, 100 Feet Road, Ambapuram, Vijayawada-12</p>
+                    </div>
+                    <p class="event-desc">We solicit your gracious presence with family & friends on the occasion of our marriage.</p>
+                    <a href="https://www.google.com/maps/place/Sri+Siri+Convention/@16.551465,80.627069,929m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3a35ef3741e6354b:0x675a01124cea800c!8m2!3d16.551465!4d80.6296439!16s%2Fg%2F11yzbzbxs8?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn-outline">See Map</a>
+                </div>
+                <div class="event-card reveal-right">
+                    <div class="event-icon"><i class="fas fa-hands-praying"></i></div>
+                    <h3>Reception & Dinner</h3>
+                    <div class="event-details">
+                        <p><i class="far fa-calendar-alt"></i> Sunday, Oct 11, 2026</p>
+                        <p><i class="far fa-clock"></i> 7:30 PM (Dinner at 8:00 PM)</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Sri Siri Convention, Inner Ring Road, 100 Feet Road, Ambapuram, Vijayawada-12</p>
+                    </div>
+                    <p class="event-desc">Join us for a wonderful evening of dining and celebration ahead of the Sumuhurtham.</p>
+                    <a href="https://www.google.com/maps/place/Sri+Siri+Convention/@16.551465,80.627069,929m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3a35ef3741e6354b:0x675a01124cea800c!8m2!3d16.551465!4d80.6296439!16s%2Fg%2F11yzbzbxs8?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn-outline">See Map</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secret Scratch-off Section -->
+    <section id="secret-message" class="section-padding bg-dark text-white" style="background-color: #0a0a0a;">
+        <div class="container text-center">
+            <div class="section-title text-center reveal">
+                <h2 style="background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">A Secret Note</h2>
+                <div class="divider"></div>
+            </div>
+            <p class="reveal delay-1" style="margin-bottom: 40px; color: #d4af37; font-family: 'Inter', sans-serif; letter-spacing: 1px;">Scratch the gold foil below to reveal a special message from us.</p>
+            <div class="scratch-container reveal-zoom delay-2">
+                <div class="scratch-content">
+                    <h3 style="font-family: var(--font-heading); font-size: 3.5rem; color: #4a3600; margin-bottom:10px; text-shadow: 1px 1px 2px rgba(255,255,255,0.8);">Can't wait to see you!</h3>
+                    <p style="color: #333; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 1rem; font-weight: bold;">Love, Naresh & Radhika</p>
+                </div>
+                <canvas id="scratchCanvas" width="600" height="300"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section-padding gallery-section">
+        <div class="container">
+            <div class="section-title text-center reveal">
+                <h2>Captured Moments</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal-zoom">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Gallery 1">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item reveal-zoom delay-1">
+                    <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=600&q=80" alt="Gallery 2">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item reveal-zoom delay-2">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80" alt="Gallery 3">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item reveal-zoom delay-3">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Gallery 4">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center reveal">
+            <h2 class="footer-title">Naresh & Radhika Lakshmi</h2>
+            <p class="footer-date">October 11, 2026 &bull; Vijayawada</p>
+            
+            <div class="footer-hosts">
+                <span class="invited-by">Invited by</span>
+                <h3 class="host-names">Adusumalli Venkateswara Rao &amp; Smt. Narayanamma</h3>
+            </div>
+            
+            <div class="footer-compliments">
+                <p>With best compliments from</p>
+                <h4>Near &amp; Dear</h4>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
