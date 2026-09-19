@@ -298,4 +298,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     }
 
+    // --- Gallery Lightbox Modal ---
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    if (lightboxModal && lightboxImg) {
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxModal.classList.add('active');
+                    lightboxModal.setAttribute('aria-hidden', 'false');
+                }
+            });
+        });
+
+        const closeLightbox = () => {
+            lightboxModal.classList.remove('active');
+            lightboxModal.setAttribute('aria-hidden', 'true');
+        };
+
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', closeLightbox);
+        }
+
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
+
 });
+
