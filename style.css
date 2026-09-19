@@ -30,6 +30,8 @@ html {
     overflow-y: auto;
     max-width: 100%;
     width: 100%;
+    touch-action: pan-y; /* Prevent diagonal swipe scroll-locking */
+    overscroll-behavior-y: none; /* Prevent pull-to-refresh bounce which feels like scroll stopping */
 }
 
 body {
@@ -43,6 +45,8 @@ body {
     width: 100%;
     position: relative;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior-y: none;
 }
 
 a {

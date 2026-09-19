@@ -286,14 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Mobile support
         canvas.addEventListener('touchstart', (e) => { 
-            // Allow scrolling while scratching by removing preventDefault
+            // Prevent scrolling while scratching
+            if (e.target === canvas) e.preventDefault();
             isDrawing = true; 
             scratch(e); 
-        }, { passive: true });
+        }, { passive: false });
         canvas.addEventListener('touchend', () => isDrawing = false);
         canvas.addEventListener('touchmove', (e) => { 
+            if (e.target === canvas) e.preventDefault();
             scratch(e); 
-        }, { passive: true });
+        }, { passive: false });
     }
 
 });
