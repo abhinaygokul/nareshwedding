@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totalScrollable = rect.height;
                 progress = Math.min(100, Math.max(0, (scrolledIntoTimeline / totalScrollable) * 100));
             }
-            timeline.style.setProperty('--scroll-progress', `${progress}%`);
+            timeline.style.setProperty('--scroll-progress', (progress / 100).toFixed(4));
         }
 
         isScrollTicking = false;

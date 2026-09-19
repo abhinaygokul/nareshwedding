@@ -772,7 +772,7 @@ h1, h2, h3 {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    --scroll-progress: 0%;
+    --scroll-progress: 0;
 }
 
 .timeline::before {
@@ -781,10 +781,12 @@ h1, h2, h3 {
     width: 2px;
     background: linear-gradient(to bottom, transparent, var(--primary-color) 10%, #aa771c 90%, transparent);
     top: 0;
-    height: var(--scroll-progress);
+    height: 100%;
+    transform-origin: top center;
+    transform: scaleY(var(--scroll-progress));
     left: 50%;
     margin-left: -1px;
-    transition: height 0.1s ease-out;
+    transition: transform 0.1s ease-out;
     box-shadow: 0 0 10px rgba(212,175,55,0.5); /* Glow effect */
 }
 
@@ -1081,6 +1083,7 @@ h1, h2, h3 {
     /* Prevent reveal-left and reveal-right from pushing beyond the screen width */
     .reveal, .reveal-left, .reveal-right, .reveal-zoom {
         filter: none !important; /* Removing blur filter cures mobile GPU stutter */
+        transition: transform 1s ease-out, opacity 1s ease-out !important;
         will-change: transform, opacity;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
