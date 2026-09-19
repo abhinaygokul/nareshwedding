@@ -193,8 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide the overlay after animation completes (approx 2.5s)
             setTimeout(() => {
                 envelopeOverlay.classList.add('hidden');
-                document.body.style.overflow = ''; // Restore vertical scrolling
-                document.body.style.overflowX = 'hidden'; // Keep horizontal strictly locked
+                document.body.style.overflow = ''; // Restore vertical scrolling (CSS handles horizontal clip)
             }, 2500);
         });
     }
@@ -287,16 +286,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Mobile support
         canvas.addEventListener('touchstart', (e) => { 
-            // Prevent scrolling while scratching
-            if (e.target === canvas) e.preventDefault();
+            // Allow scrolling while scratching by removing preventDefault
             isDrawing = true; 
             scratch(e); 
-        }, { passive: false });
+        }, { passive: true });
         canvas.addEventListener('touchend', () => isDrawing = false);
         canvas.addEventListener('touchmove', (e) => { 
-            if (e.target === canvas) e.preventDefault();
             scratch(e); 
-        }, { passive: false });
+        }, { passive: true });
     }
 
 });
