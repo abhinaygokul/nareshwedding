@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heart.classList.add('floating-heart');
         heart.innerHTML = '<i class="fas fa-heart"></i>';
         
-        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.left = (Math.random() * 80 + 10) + 'vw';
         heart.style.animationDuration = Math.random() * 3 + 5 + 's';
         heart.style.opacity = Math.random() * 0.4 + 0.1;
         
@@ -193,7 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide the overlay after animation completes (approx 2.5s)
             setTimeout(() => {
                 envelopeOverlay.classList.add('hidden');
-                document.body.style.overflow = ''; // Restore scrolling
+                document.body.style.overflow = ''; // Restore vertical scrolling
+                document.body.style.overflowX = 'hidden'; // Keep horizontal strictly locked
             }, 2500);
         });
     }

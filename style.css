@@ -26,6 +26,9 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
     -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
 }
 
 body {
@@ -34,6 +37,9 @@ body {
     line-height: 1.6;
     background-color: var(--bg-white);
     overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -846,6 +852,7 @@ h1, h2, h3 {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    display: none !important;
 }
 
 .envelope-container {
@@ -1047,38 +1054,87 @@ h1, h2, h3 {
 }
 
 @media (max-width: 768px) {
+    /* Strict Mobile Viewport Containment */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        position: relative;
+    }
+
+    section, .container {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .container {
+        padding: 0 16px !important;
+    }
+
     /* Mobile Smooth Scroll & Anti-Jitter Optimization */
     .hero {
-        background-attachment: scroll !important; /* Critical: fixed background causes heavy repaint jitter on mobile */
+        background-attachment: scroll !important; /* Fixed background causes repaint stutter on mobile */
     }
+
+    /* Prevent reveal-left and reveal-right from pushing beyond the screen width */
     .reveal, .reveal-left, .reveal-right, .reveal-zoom {
-        filter: none !important; /* Removing blur filter completely cures mobile GPU scroll stutter */
+        filter: none !important; /* Removing blur filter cures mobile GPU stutter */
         will-change: transform, opacity;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
     }
+    .reveal-left, .reveal-right {
+        transform: translateY(25px) !important; /* Replaces horizontal translateX to eliminate horizontal scroll */
+    }
+    .reveal-left.active, .reveal-right.active {
+        transform: translateY(0) !important;
+    }
 
     /* Hero & Typography */
-    .hero-title { font-size: 3rem; }
-    .countdown-container { flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .countdown-item { min-width: 70px; padding: 10px; margin: 5px; }
-    .countdown-item span { font-size: 1.8rem; }
+    .hero-title { font-size: 2.8rem; }
+    .countdown-container { 
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 8px; 
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .countdown-item { 
+        flex: 1 1 calc(25% - 8px); 
+        min-width: 65px; 
+        max-width: 75px; 
+        padding: 10px 4px; 
+        margin: 0; 
+        box-sizing: border-box;
+    }
+    .countdown-item span { font-size: 1.5rem; }
     .section-title h2 { font-size: 2.2rem; }
     
-    /* Navigation */
+    /* Navigation: use translateX with visibility:hidden to avoid horizontal overflow */
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
+        transform: translateX(100%);
+        visibility: hidden;
+        pointer-events: none;
         height: 100vh;
-        width: 70%;
+        width: 75%;
+        max-width: 280px;
         background: #fff;
         flex-direction: column;
         justify-content: center;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        transition: 0.4s;
+        transition: transform 0.35s ease, visibility 0.35s ease;
+        z-index: 1000;
     }
-    .nav-links.active { right: 0; }
+    .nav-links.active { 
+        transform: translateX(0); 
+        visibility: visible;
+        pointer-events: auto;
+    }
     .nav-links a { color: var(--text-main); font-size: 1.2rem; margin: 15px 0; }
     .hamburger { display: block; }
     
@@ -1100,18 +1156,26 @@ h1, h2, h3 {
     .envelope-text { font-size: 2.5rem; }
     
     /* Grids & Cards */
-    .couple-grid { flex-direction: column; gap: 20px; }
-    .couple-card { width: 100%; }
-    .couple-img { width: 200px; height: 200px; }
+    .couple-grid { flex-direction: column; gap: 20px; width: 100%; box-sizing: border-box; }
+    .couple-card { width: 100%; box-sizing: border-box; }
+    .couple-img { width: 180px; height: 180px; }
     .heart-divider { margin: 10px 0; transform: rotate(90deg); align-self: center; text-align: center; width: 100%; }
     
-    .events-grid { grid-template-columns: 1fr; gap: 30px; }
-    .event-card { padding: 30px 20px; }
+    .events-grid { grid-template-columns: 1fr; gap: 25px; width: 100%; box-sizing: border-box; }
+    .event-card { padding: 30px 20px; width: 100%; box-sizing: border-box; }
     
-    .gallery-grid { columns: 1 250px; gap: 15px; }
+    .gallery-grid { columns: 1 250px; gap: 15px; width: 100%; box-sizing: border-box; }
     
+    /* RSVP container */
+    .rsvp-container {
+        padding: 30px 18px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
     /* Scratch Note */
-    .scratch-container { width: 100%; height: 200px; }
+    .scratch-container { width: 100%; max-width: 100%; height: 200px; box-sizing: border-box; }
     .scratch-container canvas { width: 100% !important; height: 100% !important; }
     .scratch-content h3 { font-size: 2rem !important; }
     .scratch-content p { font-size: 0.7rem !important; }
@@ -1120,7 +1184,7 @@ h1, h2, h3 {
     .footer-title { font-size: 2.2rem; }
     .host-names { font-size: 1.2rem; }
     .footer-compliments h4 { font-size: 2.2rem; }
-    .footer { padding: 60px 20px 30px; }
+    .footer { padding: 60px 20px 30px; width: 100%; box-sizing: border-box; }
     
     /* Adjust controls */
     .music-control { bottom: 15px; left: 15px; width: 45px; height: 45px; }
