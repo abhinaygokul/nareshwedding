@@ -227,7 +227,11 @@ h1, h2, h3 {
 }
 
 .navbar.scrolled .hamburger {
-    color: var(--text-main);
+    color: var(--primary-color);
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 /* =========================================
@@ -1147,13 +1151,18 @@ h1, h2, h3 {
     .nav-links a { color: var(--text-main); font-size: 1.2rem; margin: 15px 0; }
     .hamburger { display: block; }
     
-    /* Envelope scaling */
     .envelope-container { 
         width: 90vw; 
         max-width: 320px; 
         height: 52.5vw; 
         max-height: 186px; 
         margin: 0 auto; 
+    }
+    
+    /* Footer Formatting */
+    .footer-title .mobile-amp {
+        display: block;
+        margin: 5px 0;
     }
     .envelope-container.open .envelope-paper { transform: translateY(-130px) scale(1.05); }
     .envelope-paper { 
